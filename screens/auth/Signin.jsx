@@ -12,11 +12,13 @@ export default function Signin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const onLogin = async () => {
+  const onLogin = () => {
     try {
       if (email !== '' && password !== '') {
-        await signInWithEmailAndPassword(email, password);
-        signIn(auth.currentUser);
+        signInWithEmailAndPassword(auth, email, password).then((userCredentials) => {
+          const user = userCredentials.user;
+          signIn(user);
+        });
       }
     } catch (error) {
       console.log(error);

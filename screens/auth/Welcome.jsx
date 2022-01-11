@@ -6,16 +6,20 @@ import chefWelcome from '../../assets/chef-welcome.png'
 export default function Welcome({ navigation }) {
   return (
     <View style={styles.root}>
-      <Text style={styles.heading}>Welcome to Sharecipe</Text>
-      <Text style={styles.description}>Here we will provide you the amazing
-        recipe of various food and their creaters
-        can connect and provide you additional
-        help regarding those.</Text>
+      <View>
+        <Text style={styles.heading}>Welcome to Sharecipe</Text>
+        <Text style={styles.description}>Here we will provide you the amazing
+          recipe of various food and their creaters
+          can connect and provide you additional
+          help regarding those.</Text>
+      </View>
       <Image source={chefWelcome} style={styles.image} />
-      <BigGreenButton text="Create an Account" onPress={() => { navigation.navigate('Signin') }} />
-      <View style={styles.row}>
-        <Text>Already have an account?</Text>
-        <Text onPress={() => { navigation.navigate('Signup') }} style={styles.textButton}>Sign In</Text>
+      <View>
+        <BigGreenButton style={styles.button} text="Create an Account" onPress={() => { navigation.navigate('Signup') }} />
+        <View style={styles.row}>
+          <Text>Already have an account?</Text>
+          <Text onPress={() => { navigation.navigate('Signin') }} style={styles.textButton}>Sign In</Text>
+        </View>
       </View>
     </View>
   )
@@ -25,8 +29,10 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     backgroundColor: '#fff',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: 40,
+    paddingBottom: 40,
+    paddingTop: 60
   },
   heading: {
     fontSize: 42,
@@ -35,20 +41,13 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   description: {
-    marginBottom: 40
   },
   image: {
-    marginVertical: 80
-  },
-  greenButton: {
-    borderRadius: 50,
-    padding: 20,
-    fontSize: 20,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 20,
+    marginTop: 20
   },
   textButton: {
     color: '#3eb489',

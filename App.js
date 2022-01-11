@@ -1,15 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useMemo, useReducer } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Firebase from './services/firebase';
 import AppStacks from './stacks/AppStacks';
 import AuthStacks from './stacks/AuthStacks';
 import AuthContext from './context/AuthContext';
 import Splash from './screens/Splash';
-import Signin from './screens/auth/Signin';
-import * as SecureStore from 'expo-secure-store';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from './services/firebase';
+import { getAuth } from 'firebase/auth';
 
 export default function App() {
 
@@ -44,11 +42,12 @@ export default function App() {
   );
 
   useEffect(() => {
+    initializeApp(firebaseConfig);
     const bootstrapAsync = async () => {
       let user;
 
       try {
-        user = await SecureStore.getItemAsync('user');
+        user = getAuth().currentUser;
       } catch (e) {
         console.log(e);
       }
@@ -56,25 +55,16 @@ export default function App() {
       dispatch({ type: 'RESTORE_USER', user });
     };
     bootstrapAsync();
+ 
   }, []);
 
   const authContext = useMemo(
     () => ({
       signIn: async data => {
-        // In a production app, we need to send some data (usually username, password) to server and get a token
-        // We will also need to handle errors if sign in failed
-        // After getting token, we need to persist the token using `SecureStore`
-        // In the example, we'll use a dummy token
-        SecureStore.setItemAsync('user', user);
         dispatch({ type: 'SIGN_IN', user: data.user });
       },
-      signOut: () => dispatch({ type: 'SIGN_OUT' }),
+      signout: () => dispatch({ type: 'SIGN_OUT' }),
       signUp: async data => {
-        // In a production app, we need to send user data to server and get a token
-        // We will also need to handle errors if sign up failed
-        // After getting token, we need to persist the token using `SecureStore`
-        // In the example, we'll use a dummy token
-        SecureStore.setItemAsync('user', user);
         dispatch({ type: 'SIGN_IN', user: data.user });
       },
     }),
@@ -91,7 +81,7 @@ export default function App() {
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
         <SafeAreaProvider>
-          {state.user == null ? (
+          {state.user === null ? (
             <AuthStacks />
           ) : (
             <AppStacks />
