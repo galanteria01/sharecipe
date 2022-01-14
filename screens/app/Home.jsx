@@ -12,13 +12,19 @@ const Home = () => {
         })
     }
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.root}>
             <Text>Home</Text>
-            <Button onPress={() => { onSignOut() }} title="SignOut" />
+            
         </SafeAreaView>
     )
 }
 
 export default Home
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    root: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+})
