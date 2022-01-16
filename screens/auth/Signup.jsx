@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import React, { useContext, useState } from 'react'
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
 import BigGreenButton from '../../components/BigGreenButton';
@@ -7,20 +7,22 @@ import PasswordInputField from '../../components/PasswordInputField';
 import UsernameInputField from '../../components/UsernameInputField';
 import AuthContext from '../../context/AuthContext';
 
-export default function Signup({navigation}) {
+export default function Signup({ navigation }) {
 
   const { signUp } = useContext(AuthContext);
   const auth = getAuth();
 
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [conPassword, setConPassword] = useState('');
 
   const onSignup = async () => {
     try {
       if (email !== '' && password !== '') {
         await createUserWithEmailAndPassword(auth, email, password).then((userCredentials) => {
-            const user = userCredentials.user;
-            signUp(user);
+          const user = userCredentials.user;
+          signUp(user);
         });
       }
     } catch (error) {
@@ -30,18 +32,17 @@ export default function Signup({navigation}) {
   return (
     <View style={styles.root}>
       <View style={styles.top}>
-        <Text style={styles.head}>Welcome back!</Text>
-        <Text style={styles.subHead}>We are happy to see you again. You can login
-          again and read more recipe and share
-          your owns.</Text>
+        <Text style={styles.head}>Create an Account!</Text>
+        <Text style={styles.subHead}>Create an account and start sharing your
+          recipes and taking inspiration from others</Text>
       </View>
       <View style={styles.form}>
-      <UsernameInputField
-          title="Email"
+        <UsernameInputField
+          title="Username"
           style={styles.input}
-          label="Email"
-          value={email}
-          setValue={setEmail}
+          label="Username"
+          value={username}
+          setValue={setUsername}
           placeholder="Enter your email"
         />
         <EmailInputField
@@ -61,12 +62,21 @@ export default function Signup({navigation}) {
           placeholder="Enter your password"
           secureTextEntry={true}
         />
+        <PasswordInputField
+          title="Confirm Password"
+          style={styles.input}
+          label="Confirm Password"
+          value={conPassword}
+          onChangeText={setConPassword}
+          placeholder="Enter your password"
+          secureTextEntry={true}
+        />
       </View>
       <View style={styles.bottom}>
         <BigGreenButton text={'Sign Up'} onPress={onSignup} />
         <View style={styles.bottomBox}>
           <Text>Already have an account?</Text>
-          <Text style={styles.greenText} onPress={() => navigation.goBack()}>Sign in</Text>
+          <Text style={styles.greenText} onPress={() => navigation.navigate('Signin')}>Sign in</Text>
         </View>
       </View>
     </View>
@@ -82,10 +92,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 40,
     paddingTop: 80,
-    paddingBottom: 60
+    paddingBottom: 40
   },
   top: {
-    
+
   },
   form: {
     width: '100%'

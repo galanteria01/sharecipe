@@ -3,7 +3,10 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 export default function BigGreenButton({ text, onPress }) {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      style={styles.button}
+      onPress={onPress}>
       <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   )

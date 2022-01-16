@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { Button, StyleSheet, Text, View, ScrollView } from 'react-native'
 import { getAuth, signOut } from 'firebase/auth'
 import AuthContext from '../../context/AuthContext'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import HomeRecipeCard from '../../components/HomeRecipeCard'
 const Home = () => {
     const auth = getAuth()
     const { signout } = useContext(AuthContext)
@@ -12,10 +13,16 @@ const Home = () => {
         })
     }
     return (
-        <SafeAreaView style={styles.root}>
-            <Text>Home</Text>
+        <ScrollView style={styles.root}>
+            <HomeRecipeCard />
+            <HomeRecipeCard />
+            <HomeRecipeCard />
+            <HomeRecipeCard />
+            <HomeRecipeCard />
+            <HomeRecipeCard />
+            <HomeRecipeCard />
             
-        </SafeAreaView>
+        </ScrollView>
     )
 }
 
@@ -23,8 +30,6 @@ export default Home
 
 const styles = StyleSheet.create({
     root: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        
     }
 })
