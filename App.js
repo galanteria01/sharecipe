@@ -9,6 +9,7 @@ import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './services/firebase';
 import { getAuth } from 'firebase/auth';
 
+
 export default function App() {
 
   const [state, dispatch] = useReducer(

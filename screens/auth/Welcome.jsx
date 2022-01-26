@@ -2,6 +2,8 @@ import React from 'react'
 import { View, Text, StyleSheet, Button, Image } from 'react-native'
 import BigGreenButton from '../../components/BigGreenButton'
 import chefWelcome from '../../assets/chef-welcome.png'
+import { COLORS } from '../../constants/theme'
+import LottieView from 'lottie-react-native'
 
 export default function Welcome({ navigation }) {
   return (
@@ -13,7 +15,8 @@ export default function Welcome({ navigation }) {
           can connect and provide you additional
           help regarding those.</Text>
       </View>
-      <Image source={chefWelcome} style={styles.image} />
+      {/* <Image source={chefWelcome} style={styles.image} /> */}
+      <LottieView style={styles.image} source={require('../../assets/lottie/healthy-or-junk-food.json')} autoPlay loop />
       <View>
         <BigGreenButton style={styles.button} text="Create an Account" onPress={() => { navigation.navigate('Signup') }} />
         <View style={styles.row}>
@@ -43,6 +46,7 @@ const styles = StyleSheet.create({
   description: {
   },
   image: {
+    marginTop: 40
   },
   row: {
     flexDirection: 'row',
@@ -50,7 +54,7 @@ const styles = StyleSheet.create({
     marginTop: 20
   },
   textButton: {
-    color: '#3eb489',
+    color: COLORS.green,
     marginHorizontal: 10,
   }
 })

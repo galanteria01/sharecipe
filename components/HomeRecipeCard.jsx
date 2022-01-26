@@ -2,6 +2,7 @@ import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { AirbnbRating, Avatar, Button, Card, Icon } from 'react-native-elements'
 import food from '../assets/food.jpg'
+import { COLORS } from '../constants/theme'
 
 
 const HomeRecipeCard = () => {
@@ -12,8 +13,8 @@ const HomeRecipeCard = () => {
           <Avatar
             size={24}
             rounded
-            icon={{ name: 'pencil', type: 'font-awesome' }}
-            containerStyle={{ backgroundColor: '#6733b9' }}
+            icon={{ name: 'user', type: 'font-awesome' }}
+            containerStyle={{ backgroundColor: COLORS.green }}
           />
           <Text
             style={styles.username}
@@ -98,6 +99,6 @@ const styles = StyleSheet.create({
 
   },
   button: {
-    backgroundColor: '#3eb489',
+    backgroundColor: COLORS.green,
   }
 })

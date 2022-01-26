@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
+import { COLORS } from '../constants/theme'
 
 export default function EmailInputField({title,label,value, onChange, placeholder, style}) {
     return (
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 18,
         borderRadius: 12,
-        color: '#3eb489',
+        color: COLORS.green,
         backgroundColor: '#e4e4e4'
     },
     text: {

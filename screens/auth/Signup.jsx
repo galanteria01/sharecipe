@@ -5,6 +5,7 @@ import BigGreenButton from '../../components/BigGreenButton';
 import EmailInputField from '../../components/EmailInputField';
 import PasswordInputField from '../../components/PasswordInputField';
 import UsernameInputField from '../../components/UsernameInputField';
+import { COLORS } from '../../constants/theme';
 import AuthContext from '../../context/AuthContext';
 
 export default function Signup({ navigation }) {
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
     marginTop: 20
   },
   greenText: {
-    color: '#3eb489',
+    color: COLORS.green,
     fontWeight: '700',
     marginLeft: 10
   }

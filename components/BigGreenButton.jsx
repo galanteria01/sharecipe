@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { COLORS } from '../constants/theme'
 
 export default function BigGreenButton({ text, onPress }) {
   return (
@@ -14,7 +15,7 @@ export default function BigGreenButton({ text, onPress }) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#3eb489',
+    backgroundColor: COLORS.green,
     padding: 16,
     borderRadius: 50,
   },
