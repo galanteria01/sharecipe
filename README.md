@@ -8,6 +8,7 @@ Firebase
 React Native Elements
 Lottie Animation
 Expo CLI
+Async Storage
 
 ## Contribution Guide
 Feel free to fork this repo and contribute by submitting a PR.

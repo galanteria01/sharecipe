@@ -6,24 +6,29 @@ import AuthContext from '../../context/AuthContext'
 
 const options = [
   {
-    title: 'Appointments',
+    title: 'Edit Profile',
     icon: 'av-timer',
+    route: 'EditProfile',
   },
   {
     title: 'Trips',
     icon: 'flight-takeoff',
+    route: 'Trips',
   },
   {
     title: 'Passwords',
     icon: 'fingerprint',
+    route: 'Passwords',
   },
   {
     title: 'About',
     icon: 'lightbulb-outline',
+    route: 'About',
   },
   {
     title: 'Updates',
     icon: 'track-changes',
+    route: 'Updates',
   },
 ];
 
@@ -68,19 +73,24 @@ const ListOfOptions = () => {
           <>
             <View style={styles.list}>
               <ListItem>
-                <Avatar source={'https://randomuser.me/api/portraits/women/57.jpg'} />
+                <Avatar
+                  rounded
+                  source={{ uri: 'https://randomuser.me/api/portraits/men/57.jpg' }}
+                  size={64}
+                />
                 <ListItem.Content>
                   <ListItem.Title>
-                    Limited supply! Its like digital gold!
+                    Shoury Sharma
                   </ListItem.Title>
                   <View style={styles.subtitleView}>
-                    <Image
-                      source={"https://cdn.pixabay.com/photo/2019/11/03/20/11/portrait-4599553__340.jpg"}
-                      style={styles.ratingImage}
-                    />
-                    <Text style={styles.ratingText}>5 months ago</Text>
+                    <Text style={styles.ratingText}>132 Recipes</Text>
                   </View>
                 </ListItem.Content>
+                <Icon
+                  name='chevron-right'
+                  type='font-awesome'
+                  color='#ccc'
+                />
               </ListItem>
             </View>
           </>
