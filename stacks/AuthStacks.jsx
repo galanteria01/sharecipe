@@ -4,9 +4,9 @@ import Signin from '../screens/auth/Signin'
 import Signup from '../screens/auth/Signup'
 import Welcome from '../screens/auth/Welcome'
 
-
 const AuthStack = createNativeStackNavigator()
-export default function AuthStacks() {
+
+const AuthStacks = () => {
     return (
         <AuthStack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Welcome'>
             <AuthStack.Screen name="Welcome" component={Welcome} />
@@ -16,4 +16,4 @@ export default function AuthStacks() {
     )
 }
 
-
+export default AuthStacks;

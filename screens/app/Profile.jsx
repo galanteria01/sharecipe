@@ -32,9 +32,10 @@ const options = [
   },
 ];
 
-export default function Profile() {
+const Profile = () => {
 
   const auth = getAuth()
+  const user = auth.currentUser
   const { signout } = useContext(AuthContext)
   const onSignOut = () => {
     signOut(auth).then(() => {
@@ -44,13 +45,14 @@ export default function Profile() {
 
   return (
     <View style={styles.root}>
-      <ListOfOptions />
+      <ListOfOptions user={user} />
       <Button title="Sign Out" onPress={onSignOut} />
     </View>
   )
 }
 
-const ListOfOptions = () => {
+const ListOfOptions = ({ user }) => {
+  console.log(user)
   const renderRow = ({ item }) => {
     return (
       <ListItem
@@ -102,6 +104,8 @@ const ListOfOptions = () => {
     </>
   );
 };
+
+export default Profile
 
 const styles = StyleSheet.create({
 

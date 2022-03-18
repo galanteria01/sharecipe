@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { SearchBar } from 'react-native-elements';
 
-export default function Search() {
+const Search = () => {
 
   const [search, setSearch] = useState("");
 
@@ -26,6 +26,8 @@ export default function Search() {
     </View>
   )
 }
+
+export default Search
 
 const styles = StyleSheet.create({
   root: {

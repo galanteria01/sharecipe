@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import { COLORS } from '../constants/theme'
 
-export default function PasswordInputField({title,label,value, onChange, placeholder, style}) {
+const PasswordInputField = ({title,label,value, onChange, placeholder, style}) => {
     return (
         <View style={style}>
             <Text style={styles.text}>
@@ -20,6 +20,8 @@ export default function PasswordInputField({title,label,value, onChange, placeho
          </View>
     )
 }
+
+export default PasswordInputField
 
 const styles = StyleSheet.create({
     input: {

@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import { COLORS } from '../constants/theme'
 
-export default function UsernameInputField({title,label,value, setValue, placeholder, style}) {
+const UsernameInputField = ({ title, label, value, onChange, placeholder, style }) => {
     return (
         <View style={style}>
             <Text style={styles.text}>
@@ -13,11 +13,13 @@ export default function UsernameInputField({title,label,value, setValue, placeho
                 placeholder={placeholder}
                 style={styles.input}
                 value={value}
-                onChangeText={(e) => setValue(e.target.value)}
+                onChangeText={onChange}
             />
-         </View>
+        </View>
     )
 }
+
+export default UsernameInputField
 
 const styles = StyleSheet.create({
     input: {

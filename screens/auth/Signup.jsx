@@ -8,7 +8,7 @@ import UsernameInputField from '../../components/UsernameInputField';
 import { COLORS } from '../../constants/theme';
 import AuthContext from '../../context/AuthContext';
 
-export default function Signup({ navigation }) {
+const Signup = ({ navigation }) => {
 
   const { signUp } = useContext(AuthContext);
   const auth = getAuth();
@@ -43,15 +43,15 @@ export default function Signup({ navigation }) {
           style={styles.input}
           label="Username"
           value={username}
-          setValue={setUsername}
-          placeholder="Enter your email"
+          onChange={(input) => setUsername(input)}
+          placeholder="Enter your username"
         />
         <EmailInputField
           title="Email"
           style={styles.input}
           label="Email"
           value={email}
-          setValue={setEmail}
+          onChange={(input) => setEmail(input)}
           placeholder="Enter your email"
         />
         <PasswordInputField
@@ -59,17 +59,17 @@ export default function Signup({ navigation }) {
           style={styles.input}
           label="Password"
           value={password}
-          onChangeText={setPassword}
+          onChange={(input) => setPassword(input)}
           placeholder="Enter your password"
           secureTextEntry={true}
         />
         <PasswordInputField
-          title="Confirm Password"
+          title="Password"
           style={styles.input}
-          label="Confirm Password"
+          label="Password"
           value={conPassword}
-          onChangeText={setConPassword}
-          placeholder="Enter your password"
+          onChange={(input) => setConPassword(input)}
+          placeholder="Confirm password"
           secureTextEntry={true}
         />
       </View>
@@ -84,6 +84,7 @@ export default function Signup({ navigation }) {
   )
 }
 
+export default Signup
 
 const styles = StyleSheet.create({
   root: {

@@ -7,7 +7,7 @@ import PasswordInputField from '../../components/PasswordInputField';
 import { COLORS } from '../../constants/theme';
 import AuthContext from '../../context/AuthContext';
 
-export default function Signin({navigation}) {
+const Signin = ({navigation}) => {
 
   const { signIn } = useContext(AuthContext);
   const auth = getAuth();
@@ -65,6 +65,7 @@ export default function Signin({navigation}) {
   )
 }
 
+export default Signin
 
 const styles = StyleSheet.create({
   root: {

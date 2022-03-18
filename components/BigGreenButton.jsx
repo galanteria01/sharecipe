@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { COLORS } from '../constants/theme'
 
-export default function BigGreenButton({ text, onPress }) {
+const BigGreenButton = ({ text, onPress }) => {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -12,6 +12,8 @@ export default function BigGreenButton({ text, onPress }) {
     </TouchableOpacity>
   )
 }
+
+export default BigGreenButton
 
 const styles = StyleSheet.create({
   button: {

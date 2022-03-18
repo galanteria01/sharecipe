@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-export default function Splash() {
+const Splash = () => {
     return (
         <View style={styles.root}>
             <Text>Loading</Text>
@@ -9,6 +9,7 @@ export default function Splash() {
     )
 }
 
+export default Splash
 
 const styles = StyleSheet.create({
     root: {

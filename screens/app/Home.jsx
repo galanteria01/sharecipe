@@ -7,6 +7,7 @@ import HomeRecipeCard from '../../components/HomeRecipeCard'
 import { COLORS } from '../../constants/theme'
 import { FAB } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
+
 const Home = () => {
     const [visible, setVisible] = React.useState(true);
     const navigation = useNavigation()

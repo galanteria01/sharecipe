@@ -8,7 +8,7 @@ import Search from './Search'
 
 const Tab = createBottomTabNavigator()
 
-export default function Tabs() {
+const Tabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -21,3 +21,5 @@ export default function Tabs() {
     </Tab.Navigator>
   )
 }
+
+export default Tabs

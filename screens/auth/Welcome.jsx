@@ -5,7 +5,7 @@ import chefWelcome from '../../assets/chef-welcome.png'
 import { COLORS } from '../../constants/theme'
 import LottieView from 'lottie-react-native'
 
-export default function Welcome({ navigation }) {
+const Welcome = ({ navigation }) => {
   return (
     <View style={styles.root}>
       <View>
@@ -27,6 +27,8 @@ export default function Welcome({ navigation }) {
     </View>
   )
 }
+
+export default Welcome
 
 const styles = StyleSheet.create({
   root: {

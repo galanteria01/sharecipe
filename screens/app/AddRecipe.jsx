@@ -1,8 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import React from 'react';
 import { addDoc, collection, getFirestore } from "firebase/firestore"
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { TouchableOpacity } from 'react-native-web';
+
+const initialValues = {
+  foodImage: '',
+  foodName: '',
+}
 
 const AddRecipe = () => {
+  const [values, setValues] = React.useState(initialValues);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setValues({
+      ...values,
+      [name]: value
+    })
+  }
+
 
   const db = getFirestore()
 
@@ -26,7 +44,13 @@ const AddRecipe = () => {
   }
   return (
     <View style={styles.root}>
-      <Text>Hello create recipe</Text>
+      <TouchableOpacity onPress={ () => {} }>
+        <Text>Add Image</Text>
+      </TouchableOpacity>
+      <TextInput
+        value={foodName}
+        onChangeText={(e) => setFoodName(e)}
+      />
     </View>
   );
 };

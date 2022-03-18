@@ -4,7 +4,6 @@ import { AirbnbRating, Avatar, Button, Card, Icon } from 'react-native-elements'
 import food from '../assets/food.jpg'
 import { COLORS } from '../constants/theme'
 
-
 const HomeRecipeCard = () => {
   return (
     <Card containerStyle={styles.card}>

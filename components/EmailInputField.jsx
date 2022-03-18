@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import { COLORS } from '../constants/theme'
 
-export default function EmailInputField({title,label,value, onChange, placeholder, style}) {
+const EmailInputField = ({ title, label, value, onChange, placeholder, style }) => {
     return (
         <View style={style}>
             <Text style={styles.text}>
@@ -16,9 +16,11 @@ export default function EmailInputField({title,label,value, onChange, placeholde
                 value={value}
                 onChangeText={onChange}
             />
-         </View>
+        </View>
     )
 }
+
+export default EmailInputField
 
 const styles = StyleSheet.create({
     input: {
