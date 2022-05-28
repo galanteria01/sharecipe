@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { useEffect, useMemo, useReducer } from 'react';
+import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppStacks from './stacks/AppStacks';
 import AuthStacks from './stacks/AuthStacks';
@@ -11,7 +11,7 @@ import { getAuth } from 'firebase/auth';
 
 export default function App() {
 
-  const [state, dispatch] = useReducer(
+  const [state, dispatch] = React.useReducer(
     (prevState, action) => {
       switch (action.type) {
         case 'RESTORE_USER':
@@ -41,7 +41,7 @@ export default function App() {
     }
   );
 
-  useEffect(() => {
+  React.useEffect(() => {
     initializeApp(firebaseConfig);
     const bootstrapAsync = async () => {
       let user;
@@ -58,7 +58,7 @@ export default function App() {
  
   }, []);
 
-  const authContext = useMemo(
+  const authContext = React.useMemo(
     () => ({
       signIn: async data => {
         dispatch({ type: 'SIGN_IN', user: data.user });

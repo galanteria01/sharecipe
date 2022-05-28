@@ -6,7 +6,7 @@ import Tabs from '../screens/app/Tabs'
 import ViewRecipe from '../screens/app/ViewRecipe'
 
 const AppStack = createNativeStackNavigator()
-
+ 
 const AppStacks = () => {
     return (
         <AppStack.Navigator screenOptions={{ headerShown: false }}>

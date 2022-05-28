@@ -1,5 +1,5 @@
 import { getAuth, signOut } from 'firebase/auth'
-import React, { useContext } from 'react'
+import React from 'react'
 import { View, Text, StyleSheet, FlatList } from 'react-native'
 import { Avatar, Button, Icon, Image, ListItem } from 'react-native-elements'
 import AuthContext from '../../context/AuthContext'
@@ -36,7 +36,7 @@ const Profile = () => {
 
   const auth = getAuth()
   const user = auth.currentUser
-  const { signout } = useContext(AuthContext)
+  const { signout } = React.useContext(AuthContext)
   const onSignOut = () => {
     signOut(auth).then(() => {
       signout()
@@ -52,7 +52,6 @@ const Profile = () => {
 }
 
 const ListOfOptions = ({ user }) => {
-  console.log(user)
   const renderRow = ({ item }) => {
     return (
       <ListItem

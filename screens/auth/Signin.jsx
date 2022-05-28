@@ -1,6 +1,6 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import React, { useContext, useState } from 'react'
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
+import React, {  } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 import BigGreenButton from '../../components/BigGreenButton';
 import EmailInputField from '../../components/EmailInputField';
 import PasswordInputField from '../../components/PasswordInputField';
@@ -9,11 +9,11 @@ import AuthContext from '../../context/AuthContext';
 
 const Signin = ({navigation}) => {
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = React.useContext(AuthContext);
   const auth = getAuth();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
   const onLogin = () => {
     try {

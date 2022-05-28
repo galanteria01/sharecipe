@@ -1,20 +1,27 @@
-import React, { useContext } from 'react'
-import { Button, StyleSheet, Text, View, ScrollView, FlatList } from 'react-native'
-import { getAuth, signOut } from 'firebase/auth'
-import AuthContext from '../../context/AuthContext'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import React from 'react'
+import { StyleSheet, View, ScrollView, RefreshControl } from 'react-native'
 import HomeRecipeCard from '../../components/HomeRecipeCard'
 import { COLORS } from '../../constants/theme'
 import { FAB } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
 
 const Home = () => {
-    const [visible, setVisible] = React.useState(true);
     const navigation = useNavigation()
+    const [visible, setVisible] = React.useState(true);
+    const [refreshing, setRefreshing] = React.useState(false);
+    
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        wait(2000).then(() => setRefreshing(false));
+    }, []);
 
     return (
         <View>
             <ScrollView style={styles.root}>
+                <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                />
                 <HomeRecipeCard />
                 <HomeRecipeCard />
                 <HomeRecipeCard />

@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import React, { useContext, useState } from 'react'
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
+import React, {  } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 import BigGreenButton from '../../components/BigGreenButton';
 import EmailInputField from '../../components/EmailInputField';
 import PasswordInputField from '../../components/PasswordInputField';
@@ -8,15 +8,23 @@ import UsernameInputField from '../../components/UsernameInputField';
 import { COLORS } from '../../constants/theme';
 import AuthContext from '../../context/AuthContext';
 
+const initialValues = {
+  username: '',
+  email: '',
+  password: '',
+  conPassword: ''
+}
+
 const Signup = ({ navigation }) => {
 
-  const { signUp } = useContext(AuthContext);
+  const [valus, setValues] = React.useState(initialValues);
+  const { signUp } = React.useContext(AuthContext);
   const auth = getAuth();
 
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [conPassword, setConPassword] = useState('');
+  const [username, setUsername] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [conPassword, setConPassword] = React.useState('');
 
   const onSignup = async () => {
     try {

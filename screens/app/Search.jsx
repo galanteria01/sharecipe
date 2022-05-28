@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React from 'react'
+import { View, StyleSheet } from 'react-native'
 import { SearchBar } from 'react-native-elements';
 
 const Search = () => {
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = React.useState("");
 
   const updateSearch = (search) => {
     setSearch(search);
