@@ -2,7 +2,9 @@ import { StyleSheet, Text, TextInput, View, TouchableOpacity, Button } from 'rea
 import React from 'react';
 import { addDoc, collection, getFirestore } from "firebase/firestore"
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Avatar } from 'react-native-elements/dist/avatar/Avatar';
+import { Avatar } from "@rneui/themed";
+import { COLORS } from '../../constants/theme';
+import { useNavigation } from '@react-navigation/native';
 
 const initialValues = {
   foodImage: '',
@@ -18,6 +20,7 @@ const initialValues = {
 
 const AddRecipe = () => {
   const [values, setValues] = React.useState(initialValues);
+  const navigation = useNavigation();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +35,7 @@ const AddRecipe = () => {
 
   const addRecipe = async () => {
     try {
-      const recipe = await addDoc(collection(db, "recipes"), {
+      const data = await addDoc(collection(db, "recipes"), {
         foodImage: values.foodImage,
         foodName: values.foodName,
         foodDescription: values.foodDescription,
@@ -43,6 +46,10 @@ const AddRecipe = () => {
         foodCookTime: values.foodCookTime,
         foodRating: values.foodRating,
       })
+      if (data) {
+        console.log("Recipe added successfully")
+        navigation.navigate("Home")
+      }
     } catch (error) {
       console.log(error)
     }
@@ -63,28 +70,38 @@ const AddRecipe = () => {
           name="foodName"
           onChangeText={handleInputChange}
           placeholder="Food Name"
+          style={styles.input}
         />
         <TextInput
           value={values.foodDescription}
           name="foodDescription"
+          numberOfLines={4}
           onChangeText={handleInputChange}
-          placeholder="Food Name"
+          placeholder="Food Description"
+          style={styles.input}
         />
         <TextInput
           value={values.foodIngredients}
           name="foodIngredients"
           onChangeText={handleInputChange}
           placeholder="Food Name"
+          style={styles.input}
         />
         <TextInput
-          value={values.foodCategory}
+          value={values.foodCookTime}
           name="foodCategory"
           onChangeText={handleInputChange}
-          placeholder="Food Name"
+          placeholder="Food Cook Time(In Mins)"
+          style={styles.input}
         />
       </View>
       <View>
-        <Button title="Add Recipe" onPress={addRecipe} />
+        <Button
+          title="Add Recipe"
+          onPress={addRecipe}
+          backgroundColor={COLORS.green}
+          color={COLORS.white}
+        />
       </View>
     </SafeAreaView>
   );
@@ -107,5 +124,13 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     textAlign: 'center',
     margin: 10,
+  },
+  input: {
+    marginHorizontal: 20,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 5,
+    borderColor: '#ccc',
+    marginVertical: 10,
   }
 });

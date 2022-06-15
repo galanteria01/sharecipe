@@ -1,6 +1,6 @@
 class Error {
-  constructor(code, message) {
-    super(code, message);
+  constructor(error, message) {
+    super(error, message);
     this.error = error;
     this.message = message;
   }

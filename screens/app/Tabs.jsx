@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { Icon } from '@rneui/themed'
 import React from 'react'
-import { Icon } from 'react-native-elements'
 import { COLORS } from '../../constants/theme'
 import Home from './Home'
 import Profile from './Profile'

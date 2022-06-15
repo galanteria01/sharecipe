@@ -1,7 +1,6 @@
 import { getAuth, signOut } from 'firebase/auth'
 import React from 'react'
-import { View, Text, StyleSheet, FlatList } from 'react-native'
-import { Avatar, Button, Icon, Image, ListItem } from 'react-native-elements'
+import { View, Text, StyleSheet, FlatList, Button } from 'react-native'
 import AuthContext from '../../context/AuthContext'
 
 const options = [

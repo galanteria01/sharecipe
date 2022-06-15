@@ -2,14 +2,26 @@ import React from 'react'
 import { StyleSheet, View, ScrollView, RefreshControl } from 'react-native'
 import HomeRecipeCard from '../../components/HomeRecipeCard'
 import { COLORS } from '../../constants/theme'
-import { FAB } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
+import { collection, getDocs, getFirestore } from 'firebase/firestore'
+import { useEffect } from 'react'
+import { FAB } from '@rneui/base'
 
 const Home = () => {
     const navigation = useNavigation()
     const [visible, setVisible] = React.useState(true);
     const [refreshing, setRefreshing] = React.useState(false);
-    
+    const db = getFirestore();
+    const getRecipes = async () => {
+        const recipesRef = collection(db, 'recipes');
+        const recipes = await getDocs(recipesRef);
+        console.log(recipes)
+    }
+
+    useEffect(() => {
+        getRecipes();
+    }, [])
+
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         wait(2000).then(() => setRefreshing(false));

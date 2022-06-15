@@ -1,6 +1,6 @@
+import { SearchBar } from '@rneui/base';
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { SearchBar } from 'react-native-elements';
 
 const Search = () => {
 

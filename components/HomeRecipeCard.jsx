@@ -1,6 +1,6 @@
+import { AirbnbRating, Avatar, Card, Icon } from '@rneui/base'
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
-import { AirbnbRating, Avatar, Button, Card, Icon } from 'react-native-elements'
+import { Button, Image, StyleSheet, Text, View } from 'react-native'
 import food from '../assets/food.jpg'
 import { COLORS } from '../constants/theme'
 
@@ -46,7 +46,7 @@ const HomeRecipeCard = () => {
           showRating={false}
         />
         <Button
-          buttonStyle={styles.button}
+          style={styles.button}
           title='View Recipe'
         />
       </View>

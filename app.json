@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.galanteria01.sharecipe"
     },
     "web": {
       "favicon": "./assets/favicon.png"
